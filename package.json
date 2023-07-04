@@ -27,16 +27,12 @@
 		"!dist/**/*.spec.*"
 	],
 	"peerDependencies": {
-		"svelte": "^4.0.0",
-		"@sveltejs/kit": "^1.0.0",
-		"@auth/core": "^0.2.5"
+		"@auth/core": "^0.8.2"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.20.4",
 		"@sveltejs/package": "^2.0.0",
 		"publint": "^0.1.9",
-		"svelte": "^4.0.0",
 		"svelte-check": "^3.4.3",
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
