@@ -1,9 +1,9 @@
 import { hasAccess } from './has-access.js';
-import { IGate } from './types.js';
-import { Session } from '@auth/core/types';
+import type { Gate } from './types.js';
+import type { Session } from '@auth/core/types';
 import { error } from '@sveltejs/kit';
 
-export const hasAccessSvelte = (session: Session | null, gates: IGate[]) => {
+export const hasAccessSvelte = (session: Session | null, gates: Gate[]) => {
 	if (!hasAccess(session, gates)) {
 		throw error(403);
 	}

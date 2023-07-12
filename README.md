@@ -33,26 +33,9 @@ You can easily create gates yourself:
 import type { Session } from '@auth/core/types';
 import type { IGate } from '@jcb/access-control';
 
-enum Policies {
-	USER_ADD,
-	USER_EDIT,
-	USER_DELETE,
-	USER_LIST,
-	USER_DETAIL,
-}
-
-class PolicyGate implements IGate {
-	policies: Policies[];
-
-	constructor(policies: Policies[]) {
-		this.policies = policies;
-	}
-
-	hasAccess = (session: Session | null) => {
-		if (session?.user?.isSuperUser) return true;
-
-		return this.policies.every((val) => session?.policies.includes(Policies[val]) || false);
-	};
+export function authorityGate(authorities: string[]): Gate {
+	return (session: Session | null) =>
+		authorities.every((val) => session?.user?.authorities.includes(val) || false);
 }
 ```
 
