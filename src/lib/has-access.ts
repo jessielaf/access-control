@@ -1,7 +1,6 @@
-import type { Gate } from './types.js';
-import type { Session } from '@auth/core/types';
+import type { Gate } from './gate.js';
 
-export const hasAccess = (session: Session | null, gates: Gate[]) => {
+export const hasAccess = (session: App.Locals['session'], gates: Gate[]) => {
 	for (const gate of gates) {
 		if (!gate(session)) {
 			return false;

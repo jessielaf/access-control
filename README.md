@@ -9,7 +9,6 @@ This library was inspired by the authorization methods from [Laravel](https://la
 ## Requirements
 
 - The library expects a `@custom/config/tsconfig.json`
-- The library has `@auth/core` and `@svelte/kit` as peerDependencies
 
 ## Installation
 
@@ -19,22 +18,34 @@ npm install @custom/access-control
 
 ## Usage
 
-### Gates
+### Session type
 
-Gates determine if a user is authorized to access a function. Right now only one gate is provided:
- 
-| Gate                | Description                                         |
-|---------------------|-----------------------------------------------------|
-| `authenticatedGate` | Authenticated gate checks if the user has a session |
+The library uses the locals to pass the session. The locals can be adjusted in `src/app.d.ts`. An example is:
+
+```typescript
+declare global {
+	namespace App {
+		interface Locals {
+			session: {
+				user: {
+					username: string;
+				};
+			};
+		}
+	}
+}
+```
+
+
+### Gates
 
 You can easily create gates yourself:
 
 ```typescript
-import type { Session } from '@auth/core/types';
 import type { IGate } from '@jcb/access-control';
 
 export function authorityGate(authorities: string[]): Gate {
-	return (session: Session | null) =>
+	return (session: App.Local['session']) =>
 		authorities.every((val) => session?.user?.authorities.includes(val) || false);
 }
 ```
@@ -59,7 +70,7 @@ import { authenticatedGate } from '@jcb/access-control';
 import { hasAccessSvelte } from '@custom/access-control/lib/svelte';
 
 export const load = (async ({ locals }) => {
-	hasAccessSvelte(await locals.getSession(), [
+	hasAccessSvelte(locals.session, [
 		authenticatedGate,
 		new PolicyGate([Policies.USER_DETAIL])
 	]);
