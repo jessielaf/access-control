@@ -13,14 +13,14 @@
 	},
 	"exports": {
 		".": {
-		  "types": "./dist/index.d.ts",
-		  "svelte": "./dist/index.js"
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
 		},
 		"./svelte": {
-		  "types": "./dist/svelte.d.ts",
-		  "svelte": "./dist/svelte.js"
+			"types": "./dist/svelte.d.ts",
+			"svelte": "./dist/svelte.js"
 		}
-	  },
+	},
 	"files": [
 		"dist",
 		"!dist/**/*.test.*",
@@ -34,8 +34,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.0.0",
 		"vite": "^4.3.6",
-		"vitest": "^0.25.3",
-		"@custom/config": "workspace:*"
+		"vitest": "^0.25.3"
 	},
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
