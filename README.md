@@ -36,7 +36,6 @@ declare global {
 }
 ```
 
-
 ### Gates
 
 You can easily create gates yourself:
@@ -56,25 +55,25 @@ After the definition of your gates they can be used to check the access of a use
 
 ```typescript
 // *.svelte
-import { page } from '$app/stores';
+import { page } from '$app/stores'
 
 hasAccess($page.data.session, [
-    authenticatedGate,
-    new PolicyGate([Policies.USER_DETAIL])
-]);
+  authenticatedGate,
+  new PolicyGate([Policies.USER_DETAIL])
+])
 ```
 
 ```typescript
 // +page.server.ts
-import { authenticatedGate } from '@jcb/access-control';
-import { hasAccessSvelte } from '@custom/access-control/lib/svelte';
+import { authenticatedGate } from '@jcb/access-control'
+import { hasAccessSvelte } from '@custom/access-control/lib/svelte'
 
-export const load = (async ({ locals }) => {
-	hasAccessSvelte(locals.session, [
-		authenticatedGate,
-		new PolicyGate([Policies.USER_DETAIL])
-	]);
-});
+export async function load({ locals }) {
+  hasAccessSvelte(locals.session, [
+    authenticatedGate,
+    new PolicyGate([Policies.USER_DETAIL])
+  ])
+}
 ```
 
 ## Contributing
