@@ -1,14 +1,10 @@
-# accces-control
+# access-control
 
 ## Introduction
 
 This library is designed specifically for use in a monorepo. It is a simple wrapper that handles access control, using the principles of Gates to systematically and securely grant or deny access.
 
 This library was inspired by the authorization methods from [Laravel](https://laravel.com/docs/10.x/authorization#gates)
-
-## Requirements
-
-- The library expects a `@custom/config/tsconfig.json`
 
 ## Installation
 

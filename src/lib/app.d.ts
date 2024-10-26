@@ -1,6 +1,6 @@
 declare namespace App {
-    interface Error {
-        message?: string;
-        code: Errors;
-    }
+  interface Error {
+    message?: string
+    code: Errors
+  }
 }
